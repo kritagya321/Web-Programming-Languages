@@ -1,0 +1,103 @@
+<html>
+
+<head>
+  <title>TODO List </title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function(){
+    $("#new").hide();
+    $(".fa-trash").hide();
+
+
+    $("#add").click(function(){
+      $("#new").toggle();
+    });
+
+    $("#new").click(function(){
+      $(this).addClass("borderc");
+    });
+
+    $("#new").keypress(function(){
+      if(event.which===13){
+        $("ul").append('<li><span id = "sp"><i class="fa fa-trash"></i></span>' + $("#new").val()+ '</li>');
+        $(".fa-trash").hide();
+      }
+    });
+
+
+    $("ul").on("click","li", function(){
+      $(this).toggleClass("done");
+    });
+    
+    $("ul").on("mouseenter","li",function(){
+      $(this).find(".fa-trash").toggle();
+    });
+
+   $("ul").on("mouseleave","li",function(){
+      $(".fa-trash").hide();
+
+   });
+   //Yaha samma sab thik xa
+
+   $("ul").on("click",".fa-trash",function(){
+    $(this).parentsUntil("ul").remove();
+
+   });
+
+   
+    
+ });
+
+    
+
+</script>
+
+<style>
+
+.done{
+  text-decoration: line-through;
+}
+.borderc{
+  border-color: #8B0000;
+}
+#sp{
+  display: inline;
+  width: 40px;
+  height:40px;
+  background-color: red;
+  color : white;
+  text-align: center;
+  
+
+}
+
+
+</style>
+
+</head>
+
+<body>
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-2"></div>      
+    <div class="col-sm-8  bg-light">
+      <h3 class="bg-primary text-white">
+        TODO List&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa fa-plus" id = "add"></i>
+      </h3>
+      <input type="text" id= "new" placeholder="Add New TODO">
+      <ul id = "unlist">
+        <li><span id = "sp"><i class="fa fa-trash"></i></span> Meet TAs</li>
+        <li><span id = "sp"><i class="fa fa-trash"></i></span> Post grades</li>
+        <li><span id = "sp"><i class="fa fa-trash"></i></span> PTA meeting</li>
+      </ul>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
+
+</body>
+</html>
