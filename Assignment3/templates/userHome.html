@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Python Flask Todo List App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link href="../static/signup.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+
+        $.ajax({type: 'GET',
+                url: '/retrieve',
+                success: function(data){
+                  console.log("Connection success");
+
+                  $(data).each(function(index){
+                    var id = data[index][0];
+                    var checked = data[index][3]
+                    if (checked==1){
+                      $('#c').append(
+                      '<form class="form-group" action=/deleteItem?id='+id+' name='+ id + ' id='+id+' method="POST">'+
+                      '<li>'+
+                      '<input type = "checkbox"'+' class = checkbox id =ck'+ parseInt(data[index][0]) +' value ='+ data[index][3] +' checked>'+'&nbsp&nbsp'+ data[index][1] + ":" + data[index][2] + '&nbsp&nbsp'+
+                      '<button id=' + data[index][0] + ' class="btn btn-sm btn-danger" type="submit">Delete</button></li></form><ul style="list-style-type:none"><li><button id=ed' + data[index][0] + ' class="btn1" type="button">Edit</button></li><ul>');
+                    }
+                    else{
+                      $('#c').append(
+                      '<form class="form-group" action=/deleteItem?id='+id+' name='+ id + ' id='+id+' method="POST">'+
+                      '<li>'+'<input type = "checkbox"'+' class = checkbox id =ck'+ parseInt(data[index][0]) +' value ='+ data[index][3] +'>'+'&nbsp&nbsp'+ data[index][1] + ":" + data[index][2] + '&nbsp&nbsp'+
+                      '<button id=' + data[index][0] + ' class="btn btn-sm btn-danger" type="submit">Delete</button></li></form><ul style="list-style-type:none"><li><button id=ed' + data[index][0] + ' class="btn1" type="button">Edit</button></li><ul>');
+                    }
+                  });
+
+                  $('.checkbox').on('click',function (event){
+                    var id = event.target.id;                    
+                    var checked = document.getElementById(id).checked
+                    $.getJSON('/updateCheck',
+                    {
+                      id: id,
+                      checked: checked
+                      });
+                  });
+
+                  $('.btn1').on('click',function (event){
+                    var id = event.target.id;                  
+                    $('#editForm').append(
+                      '<form class = "form-horizontal" action=/editItem?id='+id+' method="POST">'+
+                          '<fieldset>'+
+                        '<legend>Edit</legend>'+
+                        '<div class = "form-group">'+
+                        '<label class = "col-md-4 control-lable" for ="txtTitle">Title</label>'+
+                        '<div class = "col-md-4">'+
+                        '<input type="text" name = "inputTitle" id ="txtTitle" placeholder="Title">'+
+                        '</div>'+
+                        '</div>'+
+
+                        '<div class = "form-group">'+
+                        '<label class = "col-md-4 control-lable" for = "txtDesc">Description</label>'+
+                        '<div class = "col-md-4">'+
+                        '<textarea name = "inputDescription" id = "txtDesc" placeholder="Description"></textarea>'+
+                        '</div>'+
+                        '</div>'+
+                        '<div class = "form-group">'+
+                        '<label class = "col-md-4 control-lable" for = "singlebutton"></label>'+
+                        '<div class = "col-md-4">'+
+                        '<input id = "singlebutton" name = "singlebutton" class = "btn btn-primary btn block" type = "submit" value = "Submit"/> '+
+                        '</div>'+
+                        '</fieldset></form>'+
+                        '<form class = "form-horizontal" action="/closeEdit" method="POST">'+
+                        '<div class = "col-md-4">'+
+                        '<input id = "singlebutton" name = "singlebutton" class = "btn btn-danger btn block" type = "submit" value = "Close"/> '+
+                        '</div>'
+
+
+                      );
+                       $('.btn1').hide();
+                  });
+                                 
+                },
+                error: function(error){
+                  console.log(error);
+                }
+               }
+
+
+               );
+        
+
+
+        
+      });
+        
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                  <li class = "nav-item">
+                    <a class = "nav-link" href = "/">Home <span class = "sr-only">(current)</span></a>
+                  </li>
+                  <li class = "nav lin active">
+                    <a class = "nav-link" href = "/showAddItem"> Add Items</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/logout">Logout</a>
+                  </li>
+                 
+                </ul>
+               
+              </div>
+            </nav>
+
+            <h3 class="text-muted">Python Flask App</h3>
+        </div>
+
+        <div class="jumbotron">
+          <form>
+          <h1> TODO LIST </h1>
+          <ol id = "c" class = "list-group" type = "1">
+          </ol>
+          <div id="editForm"></div>
+        </form>
+       </div>
+
+    </div>
+</body>
+
+</html>

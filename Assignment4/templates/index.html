@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Restaurants</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHD5Azdp9yEur5KnVYJAUNf8ZAw6m40F4&callback=initMap"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      let map;
+      function initMap(){
+        infowindow = new google.maps.InfoWindow();
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: 32.85672738088807, lng: -96.99296535582215 }, 
+          zoom: 15,
+        });
+
+      }
+
+      $(document).ready(function(){
+        $.ajax({type: 'GET',
+          url: '/loaddata',
+          success: function(data){
+            console.log("Connection success");
+            console.log(data[0][3]);
+            $(data).each(function(index){
+              var lat = data[index][3]
+              var lng = data[index][4]
+              var name = data[index][1]
+              var address = data[index][2]
+              var content = '<h1><b>'+ name + '</b></h1>'+'<h3>'+address+'</h3>' 
+              const marker = new google.maps.Marker({position:{lat,lng},map:map});
+              google.maps.event.addListener(marker, "click", function(){
+                infowindow.setContent(content);
+                infowindow.open(map, this);
+              });
+
+            });
+            
+          }
+        });
+    });
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+</html>

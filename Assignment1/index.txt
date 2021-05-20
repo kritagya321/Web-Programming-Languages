@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, 
+    shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Travel Template</title>
+
+  </head>
+
+  <body>
+	  <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+		  <a class="navbar-brand" href="#">Share Your Travel</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbar">
+			    <ul class="navbar-nav mx-auto">
+			    	<li class="nav-item active">
+			        	<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			      	</li>
+			      	<li class="nav-item">
+			        	<a class="nav-link" href="#">About</a>
+			      	</li>
+			      	<li class="nav-item">
+			        	<a class="nav-link" href="#">Contact</a>
+			      	</li>
+			      	<li class="nav-item dropdown">
+			        	<a class="nav-link dropdown-toggle" href="#" id = "navbardropdown" role = "button" data-toggle = "dropdown">Browse</a>
+				        <div class = "dropdown-menu" aria-labelledby = "navbardropdown">
+				        	<a class = "dropdown-item" href = "#">Countries</a>
+				        	<a class = "dropdown-item" href = "#">Continents</a>
+				        </div>
+			      	</li>
+			    </ul>
+			    <form class = "form-inline">
+			    	<input class = "form-control mr-sm-2" type = "search" placeholder="Search" aria-label = "Search">
+			    	<button class = "btn btn-pink bg-pink" type = "submit"> Submit</button>
+
+		    	</form>
+		  </div>
+	  </nav>
+	  <div class = "container-fluid bg-light">
+	  		<div class = "row">
+	  			<div class = "cols-md-2 "> 
+	  				
+	  				<div id="LeftBar">
+		  				<ul>
+		  					<li class="bg-primary">Continents</li>
+		  					<li>Africa</li>
+		  					<li>Asia</li>
+		  					<li>Europe</li>
+		  					<li>North America</li>
+		  					<li>South America</li>
+		  				</ul>
+		  			</div>
+		  			<div id = "LeftBar">
+		  				<ul>
+		  					<li class="bg-primary">Contries</li>
+		  					<li>Canada</li>
+		  					<li>France</li>
+		  					<li>Itly</li>
+		  					<li>Germany</li>
+		  					<li>Ghana</li>
+		  					<li>Greece</li>
+		  					<li>Hungary</li>
+		  					<li>Spain</li>
+		  					<li>United States</li>
+		  					<li>United Kingdom</li>
+		  				</ul>
+		  			</div>
+	  			</div>
+	  			<div class = "cols-md-10">
+	  				<div class = "row">
+	  					<div class = "cols-md-8" id = "centralcol" >
+	  						<div>
+	  							<div>
+			  						<figure id = "caption">
+			  						<img src = "images/temple.jpg" />
+			  						<figcaption>Located on the western perimeter of Agon in Athens. Built in 460-415 BCE, it is the best preserved temple of antiquity.</figcaption>
+			  						</figure>
+			  					</div>
+				  				Related Photos
+				  				<div>	  						
+									<div class="row">
+										<div class="column">
+										    <img src = "images/related/8710320515.jpg " class="img-thumbnail" id = img>
+										    <figcaption>Ekklisia Agii Isidori <br>
+												<button class = "bg-primary">View </button>
+												<button id = "fav">Favourite </button>
+											</figcaption>
+										</div>
+										<div class="column">
+											<img src="images/related/8711623884.jpg" class="img-thumbnail" id = img>
+											<figcaption>Roman Agora</figcaption>
+											<button class = "bg-primary">View</button>
+											<button id = "fav">Favourite</button>
+										</div>
+										<div class="column">
+											<img src = "images/related/9494475161.jpg " class="img-thumbnail" id = img/>
+											<figcaption>Theatre of Dianosis </figcaption>
+											<button class = "bg-primary">View</button>
+											<button id = "fav"id = "fav">Favourite</button>
+										</div>
+										<div class = "column">
+											<img src = "images/related/9498388516.jpg " class="img-thumbnail" id = img/>
+											<figcaption>Temple of Aspedious </figcaption>									
+											<button class = "bg-primary">View</button>
+											<button id = "fav">Favourite</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+			  			<div class = "col-md-2">
+			  				<div id = "panel">
+
+				  				<h2> Temple of Hephaistos</h2>
+				  				<div class="container bg-white">
+					  				<div class="panel panel-default">
+						  				<div class="panel-body">By : Ellie Sullivan<br>
+						  				 Country: Greece<br>
+						  				 City : Athens<br>
+						  				 Taken on August 8, 2017<br>
+						  				</div>
+					  				</div>
+					  			</div>
+
+					  			<div class="btn-group bg-white" role="group" aria-label="...">
+					  				<button type="button" class="btn btn-default">
+					  					<span class = "glyphicon glyphicon-heart">G1</span>
+					  					<span class="border border-secondary"></span>
+					  				</button>
+								    <button type="button" class="btn btn-default">
+								    	<span class="glyphicon glyphicon-download">G2</span>
+								    	<span class="border border-secondary"></span>
+								    </button>
+								    <button type="button" class="btn btn-default">
+								    	<span class="glyphicon glyphicon-print">G3</span>
+								    	<span class="border border-secondary"></span>
+								    </button>
+								    <button type="button" class="btn btn-default">
+								    	<span class="glyphicon glyphicon-envelope">G4</span>
+								    	<span class="border border-secondary"></span>
+								    </button>
+								</div>
+							</div>
+
+			  			</div>
+	  				</div>
+	  			</div>
+	  		</div>
+	  </div>
+	  <div class = "row" id = "fo">
+	  	<div class = "col-md-6" id = "txt">
+	  		<h3>Share Your Travels</h3>
+	  		This is a case srudy from the FUndamentals of Web Development. This Book is published by Pearson Ed, and is the only textbook that covers the essentials of the entire field of contemporary web development.
+  				<div class = "row">
+  					<div class="col-md-6">
+	  					Headquaters
+	  					Mount Royal University
+	  					4825 Mount Royal Gate,SW
+	  					Calgary, Canada, T3E 046
+	  				</div>
+  					<div class="col-md-6">
+  						Follow US
+  						<div>
+	  						<span class="glyphicon glyphicon-camera"></span>
+	  						<span class="glyphicon glyphicon-user"></span>
+	  						<span class="glyphicon glyphicon-tag"></span>
+	  						<span class="glyphicon glyphicon-bookmark"></span>
+	  						<span class="glyphicon glyphicon-fire"></span> 
+	  					</div>
+  					</div>
+  				</div>
+  				
+  		</div>
+	  	<div class = "col-md-3">
+	  		Recent Post
+	  	</div>
+	  	<div class = "col-md-3">
+	  				<span class="glyphicon glyphicon-camera">Contact US</span>
+	  				<form>
+	  					<div class="form-group">
+	  						<input type="name" class="form-control" placeholder="Enter name">
+						 </div>
+						  
+	  					<div class="form-group">
+						    <input type="email" class="form-control" placeholder="Enter email">
+						</div>
+						<div class = "form-group">
+							<input type = "text" class = "form-control" placeholder="Enter message">
+						</div>
+						<button type="submit" id = "fav">Submit</button>
+						</form>
+	  			</div>
+	  		</div> 
+	  </div>
+	  
+	</body>
+</html>
+
+
+
